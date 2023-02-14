@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+</head>
+<body>
+  <div id="profilePhoto" >
+    <img class="css-shadow" src="https://i.pravatar.cc/75" />
+  </div>
+  <input type="text" name="fileToDownload" id="fileToDownload">
+ <button id="downloadButton" onclick="downloadFile()"> Download </button>
+</body>
+<script>
+    async function downloadFile() {
+        let fileId = document.getElementById("fileToDownload").value;
+        await fetch('http://localhost:8080/downloadFile/' + fileId, {
+            method: "GET"
+        }).then(window.open('http://localhost:8080/downloadFile/' + fileId, '_blank'));
+    }
+</script>
+</html>
